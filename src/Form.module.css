@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+/* 🔒 Previne overflow horizontal em todo o site */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -275,13 +289,6 @@ label {
 }
 
 @media (max-width: 600px) {
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    overflow-x: hidden;
-  }
-
   .container {
     min-height: 100vh;
     width: 100vw;
@@ -290,11 +297,12 @@ label {
     justify-content: center;
     align-items: flex-start;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .formWrapper {
-    width: 95vw; /* ligeiramente menor que 100% */
-    max-width: 95vw;
+    width: 92vw;        /* <– reduzido para caber com padding */
+    max-width: 92vw;
     padding: 1.5rem;
     border-radius: 10px;
     box-sizing: border-box;
@@ -303,23 +311,22 @@ label {
 
   .header {
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
+    text-align: center;
   }
 
   .clubName {
     font-size: 1.6rem;
-    text-align: center;
   }
 
   .title {
     font-size: 1.5rem;
-    text-align: center;
   }
 
   .logo {
     width: 60px;
     height: 60px;
-    min-width: 60px;
   }
 
   .inputField,
@@ -336,7 +343,6 @@ label {
 
   .paymentOption {
     width: 100%;
-    max-width: 280px;
+    max-width: 260px;
   }
 }
-
