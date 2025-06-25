@@ -233,7 +233,7 @@ label {
 
 .submitButton {
   width: 100%;
-  padding: 1.15rem;
+  padding: 1.5rem;
   background-color: #b22222;
   color: white;
   font-weight: 700;
@@ -326,7 +326,7 @@ label {
   .logo.right {
     display: none
   }
-  
+
   .container {
     padding: 1rem;
     justify-content: center;
