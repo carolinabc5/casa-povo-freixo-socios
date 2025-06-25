@@ -11,6 +11,12 @@
   box-sizing: border-box;
 }
 
+.fullWidthWrapper {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .formWrapper {
   background-color: #fff;
   padding: 2rem 1rem;
@@ -104,7 +110,107 @@ label {
   color: #aaa;
 }
 
-/* Forma de pagamento */
+.radioGroup {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 1.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radioInput {
+  width: 20px;
+  height: 20px;
+  accent-color: #b22222;
+  cursor: pointer;
+}
+
+.fileInput {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  display: none;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1.15rem;
+  background-color: #b22222;
+  color: white;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.3rem;
+  box-shadow: 0 5px 15px rgba(178, 34, 34, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 3rem;
+}
+
+.fileLabel {
+  display: inline-block;
+  background-color: #b22222;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.fileLabel:hover {
+  background-color: #7a1515;
+}
+
+.fileName {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.fileSelected {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+  font-style: italic;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.removeFileBtn {
+  background: #b22222;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.removeFileBtn:hover {
+  background-color: #7a1515;
+}
+
 .paymentMethods {
   display: flex;
   justify-content: center;
@@ -157,141 +263,12 @@ label {
   font-weight: 600;
 }
 
-/* Tipo de Cartão - novo design */
-
-.hiddenRadio {
-  display: none;
-}
-
-.cardTypeContainer {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  border: none;
-  padding: 0;
-}
-
-.cardTypeLegend {
-  font-weight: 700;
-  color: #444;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.cardTypeOption {
-  cursor: pointer;
-  border: 2px solid #b22222;
-  border-radius: 25px;
-  padding: 0.75rem 1.8rem;
-  background-color: white;
-  color: #b22222;
-  font-weight: 600;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    box-shadow 0.3s ease;
-  user-select: none;
-  box-shadow: none;
-  min-width: 110px;
-  justify-content: center;
-}
-
-.cardTypeOption:hover {
-  background-color: #ffe5e5;
-}
-
-.selectedCard {
-  background-color: #b22222;
-  color: white;
-  box-shadow: 0 4px 10px rgba(178, 34, 34, 0.4);
-  border-color: #7a0e0e;
-}
-
-.icon {
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-/* Comprovativo */
-.fileInput {
-  display: none;
-}
-
-.fileLabel {
-  display: inline-block;
-  background-color: #b22222;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.fileLabel:hover {
-  background-color: #7a1515;
-}
-
-.fileSelected {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.4rem;
-  font-style: italic;
-  color: #444;
-  font-size: 0.9rem;
-}
-
-.removeFileBtn {
-  background: #b22222;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  font-weight: 700;
-  font-size: 1.3rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  transition: background-color 0.3s ease;
-}
-
-.removeFileBtn:hover {
-  background-color: #7a1515;
-}
-
-/* Botão de submit */
-.submitButton {
-  background-color: #b22222;
-  color: white;
-  padding: 14px 32px;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 3rem;
-  width: 100%;
-}
-
-.submitButton:hover {
-  background-color: #7a1515;
-}
-
-/* Responsividade */
 @media (max-width: 600px) {
   .formWrapper {
     padding: 2rem 1rem;
-    max-width: 95%;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
   }
 
   .clubName {

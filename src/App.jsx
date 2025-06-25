@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Form.module.css";
 import logo from "./assets/logo_com_fundo.png";
 import logo2 from "./assets/logo_com_fundo.png";
@@ -6,7 +6,7 @@ import logo2 from "./assets/logo_com_fundo.png";
 function App() {
   const [metodoPagamento, setMetodoPagamento] = useState("mbway");
   const [selectedFileName, setSelectedFileName] = useState("");
-  const [cartao, setCartao] = useState("fisico");
+  const [tipoCartao, setTipoCartao] = useState("fisico");
 
   const clubeIban = "PT50000201231234567890154";
   const clubeMbway = "912345678";
@@ -19,7 +19,8 @@ function App() {
     }
   }
 
-  function removeFile() {
+  function handleRemoveFile() {
+    document.getElementById("comprovativo").value = "";
     setSelectedFileName("");
   }
 
@@ -27,11 +28,7 @@ function App() {
     <div className={styles.container}>
       <div className={styles.formWrapper}>
         <header className={styles.header}>
-          <img
-            src={logo}
-            alt="Logo Casa do Povo de Freixo"
-            className={styles.logo}
-          />
+          <img src={logo} alt="Logo Casa do Povo de Freixo" className={styles.logo} />
           <div className={styles.clubNameContainer}>
             <div className={styles.clubName}>Casa do Povo de Freixo</div>
           </div>
@@ -42,180 +39,66 @@ function App() {
 
         <form>
           <label htmlFor="nome">Nome Completo</label>
-          <input
-            id="nome"
-            type="text"
-            className={styles.inputField}
-            required
-            autoComplete="name"
-          />
+          <input id="nome" type="text" className={styles.inputField} required />
 
           <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className={styles.inputField}
-            required
-            autoComplete="email"
-          />
+          <input id="email" type="email" className={styles.inputField} required />
 
           <label htmlFor="telemovel">Telemóvel</label>
-          <input
-            id="telemovel"
-            type="tel"
-            className={styles.inputField}
-            required
-            autoComplete="tel"
-          />
+          <input id="telemovel" type="tel" className={styles.inputField} required />
 
           <label htmlFor="cartaoCidadao">Nº Cartão de Cidadão</label>
-          <input
-            id="cartaoCidadao"
-            type="text"
-            className={styles.inputField}
-            required
-            autoComplete="off"
-          />
+          <input id="cartaoCidadao" type="text" className={styles.inputField} required />
 
           <label htmlFor="dataNascimento">Data de Nascimento</label>
-          <input
-            id="dataNascimento"
-            type="date"
-            className={styles.inputField}
-            required
-          />
+          <input id="dataNascimento" type="date" className={styles.inputField} required />
 
           <label htmlFor="morada">Morada</label>
-          <input
-            id="morada"
-            type="text"
-            className={styles.inputField}
-            required
-            autoComplete="street-address"
-          />
+          <input id="morada" type="text" className={styles.inputField} required />
 
           <label htmlFor="nacionalidade">Nacionalidade</label>
-          <input
-            id="nacionalidade"
-            type="text"
-            className={styles.inputField}
-            required
-          />
+          <input id="nacionalidade" type="text" className={styles.inputField} required />
 
-          {/* Tipo de Cartão - agora aparece antes */}
-          <fieldset
-            className={styles.cardTypeContainer}
-            aria-label="Tipo de cartão"
-          >
-            <legend className={styles.cardTypeLegend}>Tipo de Cartão</legend>
-
-            <label
-              className={`${styles.cardTypeOption} ${
-                cartao === "fisico" ? styles.selectedCard : ""
-              }`}
-            >
-              <input
-                type="radio"
-                name="cartao"
-                value="fisico"
-                checked={cartao === "fisico"}
-                onChange={() => setCartao("fisico")}
-                className={styles.hiddenRadio}
-              />
-              <span className={styles.icon}>🖨️</span>
+          <label>Tipo de Cartão</label>
+          <div className={styles.radioGroup}>
+            <label className={styles.radioLabel}>
+              <input type="radio" name="tipoCartao" value="fisico" checked={tipoCartao === "fisico"} onChange={() => setTipoCartao("fisico")} className={styles.radioInput} />
               Físico
             </label>
-
-            <label
-              className={`${styles.cardTypeOption} ${
-                cartao === "digital" ? styles.selectedCard : ""
-              }`}
-            >
-              <input
-                type="radio"
-                name="cartao"
-                value="digital"
-                checked={cartao === "digital"}
-                onChange={() => setCartao("digital")}
-                className={styles.hiddenRadio}
-              />
-              <span className={styles.icon}>📱</span>
+            <label className={styles.radioLabel}>
+              <input type="radio" name="tipoCartao" value="digital" checked={tipoCartao === "digital"} onChange={() => setTipoCartao("digital")} className={styles.radioInput} />
               Digital
             </label>
-
-            <label
-              className={`${styles.cardTypeOption} ${
-                cartao === "ambos" ? styles.selectedCard : ""
-              }`}
-            >
-              <input
-                type="radio"
-                name="cartao"
-                value="ambos"
-                checked={cartao === "ambos"}
-                onChange={() => setCartao("ambos")}
-                className={styles.hiddenRadio}
-              />
-              <span className={styles.icon}>🖨️ + 📱</span>
+            <label className={styles.radioLabel}>
+              <input type="radio" name="tipoCartao" value="ambos" checked={tipoCartao === "ambos"} onChange={() => setTipoCartao("ambos")} className={styles.radioInput} />
               Ambos
             </label>
-          </fieldset>
+          </div>
 
-          {/* Forma de Pagamento */}
           <label>Forma de Pagamento</label>
           <div className={styles.paymentMethods}>
-            <div
-              className={`${styles.paymentOption} ${
-                metodoPagamento === "mbway" ? styles.selected : ""
-              }`}
-              onClick={() => setMetodoPagamento("mbway")}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) =>
-                e.key === "Enter" && setMetodoPagamento("mbway")
-              }
-            >
-              <img
-                src="/icons/mbway.png"
-                alt="MB WAY"
-                className={styles.paymentIcon}
-              />
+            <div className={`${styles.paymentOption} ${metodoPagamento === "mbway" ? styles.selected : ""}`} onClick={() => setMetodoPagamento("mbway")}> 
+              <img src="/icons/mbway.png" alt="MB WAY" className={styles.paymentIcon} />
               <span>MB WAY</span>
             </div>
-
-            <div
-              className={`${styles.paymentOption} ${
-                metodoPagamento === "iban" ? styles.selected : ""
-              }`}
-              onClick={() => setMetodoPagamento("iban")}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && setMetodoPagamento("iban")}
-            >
-              <img
-                src="/icons/iban.png"
-                alt="IBAN"
-                className={styles.paymentIcon}
-              />
+            <div className={`${styles.paymentOption} ${metodoPagamento === "iban" ? styles.selected : ""}`} onClick={() => setMetodoPagamento("iban")}> 
+              <img src="/icons/iban.png" alt="IBAN" className={styles.paymentIcon} />
               <span>Transferência</span>
             </div>
           </div>
 
           {metodoPagamento === "mbway" && (
             <p className={styles.infoText}>
-              Por favor, envie o valor para o número MB WAY do clube:{" "}
-              <strong>{clubeMbway}</strong>
+              Por favor, envie o valor para o número MB WAY do clube: <strong>{clubeMbway}</strong>
             </p>
           )}
 
           {metodoPagamento === "iban" && (
             <p className={styles.infoText}>
-              Por favor, faça a transferência para o IBAN do clube:{" "}
-              <strong>{clubeIban}</strong>
+              Por favor, faça a transferência para o IBAN do clube: <strong>{clubeIban}</strong>
             </p>
           )}
 
-          {/* Comprovativo */}
           <label htmlFor="comprovativo" className={styles.fileLabel}>
             Comprovativo de Pagamento
           </label>
@@ -229,15 +112,8 @@ function App() {
           />
           {selectedFileName && (
             <div className={styles.fileSelected}>
-              <span>{selectedFileName}</span>
-              <button
-                type="button"
-                onClick={removeFile}
-                className={styles.removeFileBtn}
-                aria-label="Remover ficheiro selecionado"
-              >
-                ×
-              </button>
+              <span className={styles.fileName}>Ficheiro selecionado: {selectedFileName}</span>
+              <button type="button" className={styles.removeFileBtn} onClick={handleRemoveFile}>×</button>
             </div>
           )}
 
