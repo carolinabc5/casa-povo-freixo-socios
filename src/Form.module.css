@@ -363,8 +363,8 @@ label {
 
   .inputField,
   .submitButton {
-    font-size: 1rem;
-    padding: 0.8rem;
+    font-size: 1.3rem;
+    padding: 1rem;
   }
 
   .paymentMethods {
