@@ -278,36 +278,38 @@ label {
   html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* esconde a parte direita da página */
+    overflow-x: auto; /* permitir scroll horizontal se necessário */
   }
 
   .container {
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    justify-content: flex-start;  /* alinha à esquerda */
-    align-items: center;          /* centra verticalmente */
-    overflow: hidden;
-    padding: 0;
+    justify-content: center;   /* centra horizontalmente */
+    align-items: center;       /* centra verticalmente */
+    padding: 1rem;
   }
 
   .formWrapper {
-    width: 50vw;                /* metade da largura da tela */
-    margin-left: 0;             /* encostado à esquerda */
-    margin-right: auto;         /* nada do lado direito */
+    width: 100%;
+    max-width: 100%;
     border-radius: 0;
+    padding: 2rem 1rem;
+    margin: 0 auto;
   }
 
   .clubName {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   .logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
   }
 }
+
