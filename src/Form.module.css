@@ -149,59 +149,59 @@ label {
 }
 
 .cardTypeWrapper {
+  width: 100%;
   margin-bottom: 2rem;
-  padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background-color: #fff;
 }
 
 .sectionTitle {
+  font-weight: 600;
   font-size: 1.2rem;
-  font-weight: 700;
-  color: #444;
   margin-bottom: 1rem;
+  color: #444;
+  text-align: center;
 }
 
 .cardOptions {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 3rem;
   flex-wrap: wrap;
 }
 
 .cardOption {
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  padding: 1rem;
-  width: 130px;
-  text-align: center;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.cardOption:hover {
-  border-color: #b22222;
-  background-color: #f1f1f1;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #444;
+  user-select: none;
+  transition: color 0.3s ease;
 }
 
 .cardOption input[type="radio"] {
   display: none;
 }
 
-.cardOption img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  margin-bottom: 0.5rem;
+.cardOption .emoji {
+  font-size: 3rem;
+  margin-bottom: 0.4rem;
+  transition: transform 0.3s ease;
 }
 
-.cardOption span {
-  font-weight: 600;
-  color: #333;
+.cardOption:hover .emoji {
+  transform: scale(1.2);
+}
+
+.cardOption input[type="radio"]:checked + .emoji,
+.cardOption input[type="radio"]:checked + .emoji + span {
+  color: #b22222;
+  font-weight: 700;
 }
 
 .fileInput {
@@ -337,10 +337,10 @@ label {
 
 /* 📱 MOBILE RESPONSIVO */
 @media (max-width: 600px) {
-  .logo:last-child{
+  .logo:last-child {
     display: none;
   }
-  
+
   .container {
     padding: 1rem;
     justify-content: center;

@@ -20,8 +20,17 @@ function App() {
   }
 
   function handleRemoveFile() {
-    document.getElementById("comprovativo").value = "";
+    // Para limpar o input file de forma controlada, podes usar ref ou reset do form.
+    // Aqui vou resetar o form manualmente:
+    const inputFile = document.getElementById("comprovativo");
+    if (inputFile) {
+      inputFile.value = "";
+    }
     setSelectedFileName("");
+  }
+
+  function handleTipoCartaoChange(e) {
+    setTipoCartao(e.target.value);
   }
 
   return (
@@ -63,18 +72,39 @@ function App() {
             <legend className={styles.sectionTitle}>Tipo de Cartão</legend>
             <div className={styles.cardOptions}>
               <label className={styles.cardOption}>
-                <input type="radio" name="tipoCartao" value="fisico" required />
-                <img src="/icons/card-physical.png" alt="Cartão Físico" />
+                <input
+                  type="radio"
+                  name="tipoCartao"
+                  value="fisico"
+                  checked={tipoCartao === "fisico"}
+                  onChange={handleTipoCartaoChange}
+                  required
+                />
+                <span className={styles.emoji}>💳</span>
                 <span>Físico</span>
               </label>
+
               <label className={styles.cardOption}>
-                <input type="radio" name="tipoCartao" value="digital" required />
-                <img src="/icons/card-digital.png" alt="Cartão Digital" />
+                <input
+                  type="radio"
+                  name="tipoCartao"
+                  value="digital"
+                  checked={tipoCartao === "digital"}
+                  onChange={handleTipoCartaoChange}
+                />
+                <span className={styles.emoji}>📱</span>
                 <span>Digital</span>
               </label>
+
               <label className={styles.cardOption}>
-                <input type="radio" name="tipoCartao" value="ambos" required />
-                <img src="/icons/card-both.png" alt="Ambos" />
+                <input
+                  type="radio"
+                  name="tipoCartao"
+                  value="ambos"
+                  checked={tipoCartao === "ambos"}
+                  onChange={handleTipoCartaoChange}
+                />
+                <span className={styles.emoji}>💳 + 📱</span>
                 <span>Ambos</span>
               </label>
             </div>
@@ -82,11 +112,18 @@ function App() {
 
           <label>Forma de Pagamento</label>
           <div className={styles.paymentMethods}>
-            <div className={`${styles.paymentOption} ${metodoPagamento === "mbway" ? styles.selected : ""}`} onClick={() => setMetodoPagamento("mbway")}> 
+            <div
+              className={`${styles.paymentOption} ${metodoPagamento === "mbway" ? styles.selected : ""}`}
+              onClick={() => setMetodoPagamento("mbway")}
+            >
               <img src="/icons/mbway.png" alt="MB WAY" className={styles.paymentIcon} />
               <span>MB WAY</span>
             </div>
-            <div className={`${styles.paymentOption} ${metodoPagamento === "iban" ? styles.selected : ""}`} onClick={() => setMetodoPagamento("iban")}> 
+
+            <div
+              className={`${styles.paymentOption} ${metodoPagamento === "iban" ? styles.selected : ""}`}
+              onClick={() => setMetodoPagamento("iban")}
+            >
               <img src="/icons/iban.png" alt="IBAN" className={styles.paymentIcon} />
               <span>Transferência</span>
             </div>
@@ -118,7 +155,9 @@ function App() {
           {selectedFileName && (
             <div className={styles.fileSelected}>
               <span className={styles.fileName}>Ficheiro selecionado: {selectedFileName}</span>
-              <button type="button" className={styles.removeFileBtn} onClick={handleRemoveFile}>×</button>
+              <button type="button" className={styles.removeFileBtn} onClick={handleRemoveFile}>
+                ×
+              </button>
             </div>
           )}
 
