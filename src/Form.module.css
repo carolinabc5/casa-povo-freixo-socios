@@ -1,20 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-/* PREVENIR SCROLL LATERAL */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: 'Montserrat', sans-serif;
-}
-
+/* Básico */
 .container {
   min-height: 100vh;
   background: linear-gradient(135deg, #b22222 0%, #7a0e0e 100%);
@@ -22,12 +8,7 @@ html, body {
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  box-sizing: border-box;
-}
-
-.fullWidthWrapper {
-  width: 100%;
-  max-width: 100%;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
 
@@ -110,6 +91,7 @@ label {
   border: 2px solid #ddd;
   font-size: 1.1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .inputField:focus {
@@ -122,32 +104,7 @@ label {
   color: #aaa;
 }
 
-.radioGroup {
-  display: flex;
-  gap: 2.5rem;
-  margin-bottom: 1.8rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.radioLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #444;
-  cursor: pointer;
-  user-select: none;
-}
-
-.radioInput {
-  width: 20px;
-  height: 20px;
-  accent-color: #b22222;
-  cursor: pointer;
-}
-
+/* Tipo de cartão */
 .cardTypeWrapper {
   width: 100%;
   margin-bottom: 2rem;
@@ -181,7 +138,10 @@ label {
   font-size: 1rem;
   color: #444;
   user-select: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
 }
 
 .cardOption input[type="radio"] {
@@ -204,6 +164,14 @@ label {
   font-weight: 700;
 }
 
+/* Adicionar borda e sombra à opção selecionada */
+.selected {
+  border-color: #b22222;
+  box-shadow: 0 0 8px rgba(178, 34, 34, 0.4);
+  border-radius: 12px;
+}
+
+/* Ficheiro */
 .fileInput {
   margin-bottom: 2rem;
   font-size: 1rem;
@@ -264,6 +232,7 @@ label {
   background-color: #7a1515;
 }
 
+/* Botão de envio */
 .submitButton {
   width: 100%;
   padding: 1.15rem;
@@ -283,6 +252,7 @@ label {
   background-color: #7a1515;
 }
 
+/* Forma de pagamento */
 .paymentMethods {
   display: flex;
   justify-content: center;
@@ -328,6 +298,7 @@ label {
   box-shadow: 0 0 10px rgba(178, 34, 34, 0.3);
 }
 
+/* Texto informativo */
 .infoText {
   margin-top: 0.5rem;
   font-size: 1.5rem;
@@ -335,7 +306,7 @@ label {
   font-weight: 600;
 }
 
-/* 📱 MOBILE RESPONSIVO */
+/* MOBILE RESPONSIVO */
 @media (max-width: 600px) {
   .logo:last-child {
     display: none;
