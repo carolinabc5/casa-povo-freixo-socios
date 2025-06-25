@@ -41,7 +41,7 @@ function App() {
           <img src={logo} alt="Logo direito" className={`${styles.logo} ${styles.right}`} />
         </header>
 
-        <h1 className={styles.title}>Registo de Sócio</h1>
+        <h1 className={styles.title}>Registo de Sócio de Futsal</h1>
 
         <form>
           <label htmlFor="nome">Nome Completo</label>
