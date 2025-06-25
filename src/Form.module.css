@@ -159,7 +159,6 @@ label {
   transform: scale(1.2);
 }
 
-/* Quadrado visual à volta do cartão selecionado */
 .cardOption input[type="radio"]:checked + .emoji,
 .cardOption input[type="radio"]:checked + .emoji + span {
   color: #b22222;
@@ -304,6 +303,13 @@ label {
   font-size: 1.5rem;
   color: #b22222;
   font-weight: 600;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-word;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem;
 }
 
 /* 📱 MOBILE RESPONSIVO */
@@ -363,5 +369,9 @@ label {
     background-color: #ffe5e5;
     border-color: #b22222;
     box-shadow: 0 0 10px rgba(178, 34, 34, 0.3);
+  }
+
+  .infoText {
+    font-size: 1rem;
   }
 }
