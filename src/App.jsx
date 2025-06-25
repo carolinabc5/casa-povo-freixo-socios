@@ -59,21 +59,26 @@ function App() {
           <label htmlFor="nacionalidade">Nacionalidade</label>
           <input id="nacionalidade" type="text" className={styles.inputField} required />
 
-          <label>Tipo de Cartão</label>
-          <div className={styles.radioGroup}>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="tipoCartao" value="fisico" checked={tipoCartao === "fisico"} onChange={() => setTipoCartao("fisico")} className={styles.radioInput} />
-              Físico
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="tipoCartao" value="digital" checked={tipoCartao === "digital"} onChange={() => setTipoCartao("digital")} className={styles.radioInput} />
-              Digital
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="tipoCartao" value="ambos" checked={tipoCartao === "ambos"} onChange={() => setTipoCartao("ambos")} className={styles.radioInput} />
-              Ambos
-            </label>
-          </div>
+          <fieldset className={styles.cardTypeWrapper}>
+            <legend className={styles.sectionTitle}>Tipo de Cartão</legend>
+            <div className={styles.cardOptions}>
+              <label className={styles.cardOption}>
+                <input type="radio" name="tipoCartao" value="fisico" required />
+                <img src="/icons/card-physical.png" alt="Cartão Físico" />
+                <span>Físico</span>
+              </label>
+              <label className={styles.cardOption}>
+                <input type="radio" name="tipoCartao" value="digital" required />
+                <img src="/icons/card-digital.png" alt="Cartão Digital" />
+                <span>Digital</span>
+              </label>
+              <label className={styles.cardOption}>
+                <input type="radio" name="tipoCartao" value="ambos" required />
+                <img src="/icons/card-both.png" alt="Ambos" />
+                <span>Ambos</span>
+              </label>
+            </div>
+          </fieldset>
 
           <label>Forma de Pagamento</label>
           <div className={styles.paymentMethods}>
