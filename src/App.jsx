@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
-import logo from "./assets/logo_com_fundo.png";
+import logo from "./assets/logo_com_fundo.png"; // Usa o mesmo logo nos dois lados
 
 function App() {
   const [metodoPagamento, setMetodoPagamento] = useState("mbway");
@@ -34,10 +34,11 @@ function App() {
     <div className={styles.container}>
       <div className={styles.formWrapper}>
         <header className={styles.header}>
-          <img src={logo} alt="Logo Casa do Povo de Freixo" className={styles.logo} />
+          <img src={logo} alt="Logo esquerdo" className={`${styles.logo} ${styles.left}`} />
           <div className={styles.clubNameContainer}>
             <div className={styles.clubName}>Casa do Povo de Freixo</div>
           </div>
+          <img src={logo} alt="Logo direito" className={`${styles.logo} ${styles.right}`} />
         </header>
 
         <h1 className={styles.title}>Registo de Sócio</h1>
@@ -67,42 +68,27 @@ function App() {
           <fieldset className={styles.cardTypeWrapper}>
             <legend className={styles.sectionTitle}>Tipo de Cartão</legend>
             <div className={styles.cardOptions}>
-              <label className={`${styles.cardOption} ${tipoCartao === "fisico" ? styles.selected : ""}`}>
-                <input
-                  type="radio"
-                  name="tipoCartao"
-                  value="fisico"
-                  checked={tipoCartao === "fisico"}
-                  onChange={handleTipoCartaoChange}
-                  required
-                />
-                <span className={styles.emoji}>💳</span>
-                <span>Físico</span>
-              </label>
-
-              <label className={`${styles.cardOption} ${tipoCartao === "digital" ? styles.selected : ""}`}>
-                <input
-                  type="radio"
-                  name="tipoCartao"
-                  value="digital"
-                  checked={tipoCartao === "digital"}
-                  onChange={handleTipoCartaoChange}
-                />
-                <span className={styles.emoji}>📱</span>
-                <span>Digital</span>
-              </label>
-
-              <label className={`${styles.cardOption} ${tipoCartao === "ambos" ? styles.selected : ""}`}>
-                <input
-                  type="radio"
-                  name="tipoCartao"
-                  value="ambos"
-                  checked={tipoCartao === "ambos"}
-                  onChange={handleTipoCartaoChange}
-                />
-                <span className={styles.emoji}>💳 + 📱</span>
-                <span>Ambos</span>
-              </label>
+              {["fisico", "digital", "ambos"].map((tipo) => (
+                <label
+                  key={tipo}
+                  className={`${styles.cardOption} ${tipoCartao === tipo ? styles.selected : ""}`}
+                >
+                  <input
+                    type="radio"
+                    name="tipoCartao"
+                    value={tipo}
+                    checked={tipoCartao === tipo}
+                    onChange={handleTipoCartaoChange}
+                    required
+                  />
+                  <span className={styles.emoji}>
+                    {tipo === "fisico" ? "💳" : tipo === "digital" ? "📱" : "💳 + 📱"}
+                  </span>
+                  <span>
+                    {tipo === "fisico" ? "Físico" : tipo === "digital" ? "Digital" : "Ambos"}
+                  </span>
+                </label>
+              ))}
             </div>
           </fieldset>
 

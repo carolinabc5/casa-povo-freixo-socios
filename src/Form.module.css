@@ -312,8 +312,21 @@ label {
   padding: 0 1rem;
 }
 
+.logo.left,
+.logo.right {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* 📱 MOBILE RESPONSIVO */
 @media (max-width: 600px) {
+  .logo.right {
+    display: none
+  }
+  
   .container {
     padding: 1rem;
     justify-content: center;
